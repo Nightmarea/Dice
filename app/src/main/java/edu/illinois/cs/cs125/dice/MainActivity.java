@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private Button rollDices;
     private ImageView imageView1, imageView2, imageView3,imageView4, imageView5, imageView6;
     private int RRR;
-    private int yyyyy;
+    private int xx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
