@@ -15,9 +15,6 @@ public class MainActivity extends AppCompatActivity {
     public static final Random RANDOM = new Random();
     private Button rollDices;
     private ImageView imageView1, imageView2, imageView3,imageView4, imageView5, imageView6;
-    private int RRR;
-    private int xx;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
