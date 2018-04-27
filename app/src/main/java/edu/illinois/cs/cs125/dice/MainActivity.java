@@ -6,25 +6,39 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
+import android.widget.Toast;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toolbar;
+import android.widget.AdapterView.OnItemSelectedListener;
 
 import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnItemSelectedListener {
 
     public static final Random RANDOM = new Random();
     private Button rollDices;
     private ImageView imageView1, imageView2, imageView3,imageView4, imageView5, imageView6;
-    Button b2, b3, b4, b5, b6, b1;
+    private Spinner spinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         rollDices = (Button) findViewById(R.id.rolling);
+        spinner = (Spinner) findViewById(R. id.spinner);
+        spinner.setOnItemSelectedListener(this);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.amount_arrays, android.R.layout.simple_spinner_item);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner.setAdapter(adapter);
         imageView1 = (ImageView) findViewById(R.id.imageView1);
         imageView2 = (ImageView) findViewById(R.id.imageView2);
         imageView3 = (ImageView) findViewById(R.id.imageView3);
@@ -32,17 +46,24 @@ public class MainActivity extends AppCompatActivity {
         imageView5 = (ImageView) findViewById(R.id.imageView5);
         imageView6 = (ImageView) findViewById(R.id.imageView6);
 
-        b1 = (Button) findViewById(R.id.button);
-        b2 = (Button) findViewById(R.id.button2);
-        b3 = (Button) findViewById(R.id.button3);
-                b4 = (Button) findViewById(R.id.button4);
-                b5 = (Button) findViewById(R.id.button5);
-                b6 = (Button) findViewById(R.id.button6);
-
 
         rollDices.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                List<ImageView> list = new ArrayList<ImageView>();
+                list.add(imageView1);
+                list.add(imageView2);
+                list.add(imageView3);
+                list.add(imageView4);
+                list.add(imageView5);
+                list.add(imageView6);
+
+                for(int i = 0; i < 6; i++){
+                    list.get(i).setVisibility(View.VISIBLE);
+                }
+
+                String text = spinner.getSelectedItem().toString();
+                int input = Integer.parseInt(text);
 
                 int val1 = randomDiceVal();
                 int val2 = randomDiceVal();
@@ -62,70 +83,39 @@ public class MainActivity extends AppCompatActivity {
 
 
                 imageView1.setImageResource(new1);
-                imageView1.setVisibility(View.INVISIBLE);
                 imageView2.setImageResource(new2);
                 imageView3.setImageResource(new3);
                 imageView4.setImageResource(new4);
                 imageView5.setImageResource(new5);
                 imageView6.setImageResource(new6);
 
+                for(int i = 0; i < 6 - input; i++){
+                        int index = randomFromList(list);
+                        list.get(index).setVisibility(View.INVISIBLE);
+                        list.remove(index);
+                }
             }
         });
 
     }
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        // On selecting a spinner item
+        String item = parent.getItemAtPosition(position).toString();
+
+    }
+    public void onNothingSelected(AdapterView<?> arg0) {
+        // TODO Auto-generated method stub
+    }
+
 
     public static int randomDiceVal(){
         return RANDOM.nextInt(6) + 1;
     }
 
-    public void b1Clicked(View v) {
-        imageView1.setVisibility(View.VISIBLE);
-        imageView2.setVisibility(View.INVISIBLE);
-        imageView3.setVisibility(View.INVISIBLE);
-        imageView4.setVisibility(View.INVISIBLE);
-        imageView5.setVisibility(View.INVISIBLE);
-        imageView6.setVisibility(View.INVISIBLE);
+    public static int randomFromList(List list) {
+        int index = RANDOM.nextInt(list.size());
+        return index;
     }
-    public void b2Clicked(View v) {
-        imageView1.setVisibility(View.VISIBLE);
-        imageView2.setVisibility(View.VISIBLE);
-        imageView3.setVisibility(View.INVISIBLE);
-        imageView4.setVisibility(View.INVISIBLE);
-        imageView5.setVisibility(View.INVISIBLE);
-        imageView6.setVisibility(View.INVISIBLE);
-    }
-    public void b3Clicked(View v) {
-        imageView1.setVisibility(View.VISIBLE);
-        imageView2.setVisibility(View.VISIBLE);
-        imageView3.setVisibility(View.VISIBLE);
-        imageView4.setVisibility(View.INVISIBLE);
-        imageView5.setVisibility(View.INVISIBLE);
-        imageView6.setVisibility(View.INVISIBLE);
-    }
-    public void b4Clicked(View v) {
-        imageView1.setVisibility(View.VISIBLE);
-        imageView2.setVisibility(View.VISIBLE);
-        imageView3.setVisibility(View.VISIBLE);
-        imageView4.setVisibility(View.VISIBLE);
-        imageView5.setVisibility(View.INVISIBLE);
-        imageView6.setVisibility(View.INVISIBLE);
-    }
-    public void b5Clicked(View v) {
-        imageView1.setVisibility(View.VISIBLE);
-        imageView2.setVisibility(View.VISIBLE);
-        imageView3.setVisibility(View.VISIBLE);
-        imageView4.setVisibility(View.VISIBLE);
-        imageView5.setVisibility(View.VISIBLE);
-        imageView6.setVisibility(View.INVISIBLE);
-    }
-    public void b6Clicked(View v) {
-        imageView1.setVisibility(View.VISIBLE);
-        imageView2.setVisibility(View.VISIBLE);
-        imageView3.setVisibility(View.VISIBLE);
-        imageView4.setVisibility(View.VISIBLE);
-        imageView5.setVisibility(View.VISIBLE);
-        imageView6.setVisibility(View.VISIBLE);
-    }
-
 
 }
