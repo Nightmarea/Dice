@@ -67,7 +67,8 @@
             android:id="@+id/imageView6"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/dice6"/>
+            android:src="@drawable/dice6"
+            android:visibility="visible" />
 
     </LinearLayout>
 

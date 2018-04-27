@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 imageView1.setImageResource(new1);
+                imageView1.setVisibility(View.INVISIBLE);
                 imageView2.setImageResource(new2);
                 imageView3.setImageResource(new3);
                 imageView4.setImageResource(new4);
