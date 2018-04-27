@@ -12,7 +12,7 @@
     tools:context="edu.illinois.cs.cs125.dice.MainActivity"
     android:background="@drawable/table2">
 
-   <LinearLayout
+    <LinearLayout
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:layout_marginTop="50dp"
@@ -72,6 +72,7 @@
 
     </LinearLayout>
 
+
     <Button
         android:id="@+id/rolling"
         style="@style/Widget.AppCompat.Button.Colored"
@@ -79,24 +80,95 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="16dp"
         android:background="@android:color/black"
         android:text="Roll"
         android:textSize="20sp" />
 
-    <EditText
-        android:id="@+id/editText"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_height="188dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="115dp"
-        android:background="#FFF"
-        android:ems="10"
-        android:hint="how many dices"
-        android:inputType="textPersonName"
-        android:selectAllOnFocus="false"
-        android:singleLine="false"
-        android:textColor="#FF000000" />
+        android:layout_marginTop="340dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="128dp"
+            android:layout_marginRight="20dp"
+            android:background="@android:color/black"
+            android:onClick="b1Clicked"
+            android:text="1"
+            android:textColor="@android:color/background_light"
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:background="@android:color/black"
+            android:onClick="b2Clicked"
+            android:text="2"
+            android:textColor="@android:color/background_light"
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/black"
+            android:onClick="b3Clicked"
+            android:text="3"
+            android:textColor="@android:color/background_light"
+            android:textSize="22sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="188dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="410dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:background="@android:color/black"
+            android:onClick="b4Clicked"
+            android:text="4"
+            android:textColor="@android:color/background_light"
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:background="@android:color/black"
+            android:onClick="b5Clicked"
+            android:text="5"
+            android:textColor="@android:color/background_light"
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/black"
+            android:onClick="b6Clicked"
+            android:text="6"
+            android:textColor="@android:color/background_light"
+            android:textSize="22sp" />
+    </LinearLayout>
+
 
 </RelativeLayout>

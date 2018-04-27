@@ -5,8 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.Toolbar;
 
 import java.util.Random;
 
@@ -15,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     public static final Random RANDOM = new Random();
     private Button rollDices;
     private ImageView imageView1, imageView2, imageView3,imageView4, imageView5, imageView6;
+    Button b2, b3, b4, b5, b6, b1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,43 +32,18 @@ public class MainActivity extends AppCompatActivity {
         imageView5 = (ImageView) findViewById(R.id.imageView5);
         imageView6 = (ImageView) findViewById(R.id.imageView6);
 
+        b1 = (Button) findViewById(R.id.button);
+        b2 = (Button) findViewById(R.id.button2);
+        b3 = (Button) findViewById(R.id.button3);
+                b4 = (Button) findViewById(R.id.button4);
+                b5 = (Button) findViewById(R.id.button5);
+                b6 = (Button) findViewById(R.id.button6);
+
 
         rollDices.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-//                final Animation anim1 = AnimationUtils.loadAnimation(MainActivity.this,R.anim.shake);
-//                final Animation anim2 = AnimationUtils.loadAnimation(MainActivity.this,R.anim.shake);
-//
-//                final Animation.AnimationListener animationListener = new Animation.AnimationListener() {
-//                    @Override
-//                    public void onAnimationStart(Animation animation) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onAnimationEnd(Animation animation) {
-//                        int value = randomDiceVal();
-//                        int res = getResources().getIdentifier("dice_" + value, "drawable", "edu.illinois.cs.cs125.dice");
-//
-//                        if (animation == anim1) {
-//                            imageView1.setImageResource(res);
-//                        } else if (animation ==anim2) {
-//                            imageView2.setImageResource(res);
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onAnimationRepeat(Animation animation) {
-//
-//                    }
-//                };
-//
-//                anim1.setAnimationListener(animationListener);
-//                anim2.setAnimationListener(animationListener);
-//
-//                imageView1.startAnimation(anim1);
-//                imageView2.startAnimation(anim2);
                 int val1 = randomDiceVal();
                 int val2 = randomDiceVal();
                 int val3 = randomDiceVal();
@@ -91,9 +71,61 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
     }
 
     public static int randomDiceVal(){
         return RANDOM.nextInt(6) + 1;
     }
+
+    public void b1Clicked(View v) {
+        imageView1.setVisibility(View.VISIBLE);
+        imageView2.setVisibility(View.INVISIBLE);
+        imageView3.setVisibility(View.INVISIBLE);
+        imageView4.setVisibility(View.INVISIBLE);
+        imageView5.setVisibility(View.INVISIBLE);
+        imageView6.setVisibility(View.INVISIBLE);
+    }
+    public void b2Clicked(View v) {
+        imageView1.setVisibility(View.VISIBLE);
+        imageView2.setVisibility(View.VISIBLE);
+        imageView3.setVisibility(View.INVISIBLE);
+        imageView4.setVisibility(View.INVISIBLE);
+        imageView5.setVisibility(View.INVISIBLE);
+        imageView6.setVisibility(View.INVISIBLE);
+    }
+    public void b3Clicked(View v) {
+        imageView1.setVisibility(View.VISIBLE);
+        imageView2.setVisibility(View.VISIBLE);
+        imageView3.setVisibility(View.VISIBLE);
+        imageView4.setVisibility(View.INVISIBLE);
+        imageView5.setVisibility(View.INVISIBLE);
+        imageView6.setVisibility(View.INVISIBLE);
+    }
+    public void b4Clicked(View v) {
+        imageView1.setVisibility(View.VISIBLE);
+        imageView2.setVisibility(View.VISIBLE);
+        imageView3.setVisibility(View.VISIBLE);
+        imageView4.setVisibility(View.VISIBLE);
+        imageView5.setVisibility(View.INVISIBLE);
+        imageView6.setVisibility(View.INVISIBLE);
+    }
+    public void b5Clicked(View v) {
+        imageView1.setVisibility(View.VISIBLE);
+        imageView2.setVisibility(View.VISIBLE);
+        imageView3.setVisibility(View.VISIBLE);
+        imageView4.setVisibility(View.VISIBLE);
+        imageView5.setVisibility(View.VISIBLE);
+        imageView6.setVisibility(View.INVISIBLE);
+    }
+    public void b6Clicked(View v) {
+        imageView1.setVisibility(View.VISIBLE);
+        imageView2.setVisibility(View.VISIBLE);
+        imageView3.setVisibility(View.VISIBLE);
+        imageView4.setVisibility(View.VISIBLE);
+        imageView5.setVisibility(View.VISIBLE);
+        imageView6.setVisibility(View.VISIBLE);
+    }
+
+
 }
