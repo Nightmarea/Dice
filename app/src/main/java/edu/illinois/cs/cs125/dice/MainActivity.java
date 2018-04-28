@@ -1,8 +1,10 @@
 package edu.illinois.cs.cs125.dice;
 
+import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
@@ -15,11 +17,15 @@ import android.widget.Spinner;
 import android.widget.Toolbar;
 import android.widget.AdapterView.OnItemSelectedListener;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+import com.daimajia.androidanimations.library.specials.in.DropOutAnimator;
+
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements OnItemSelectedListener {
+public class MainActivity extends Activity implements OnItemSelectedListener {
 
     public static final Random RANDOM = new Random();
     private Button rollDices;
@@ -32,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
         rollDices = (Button) findViewById(R.id.rolling);
         spinner = (Spinner) findViewById(R. id.spinner);
         spinner.setOnItemSelectedListener(this);
+
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.amount_arrays, android.R.layout.simple_spinner_item);
@@ -50,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
         rollDices.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                List<ImageView> list = new ArrayList<ImageView>();
+                List<ImageView> list = new ArrayList<>();
                 list.add(imageView1);
                 list.add(imageView2);
                 list.add(imageView3);
@@ -58,8 +65,20 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
                 list.add(imageView5);
                 list.add(imageView6);
 
+
                 for(int i = 0; i < 6; i++){
                     list.get(i).setVisibility(View.VISIBLE);
+                    for (int j = 0; j < 5; j++) {
+                        YoYo.with(Techniques.RotateIn)
+                                .duration(j)
+                                .repeat(10)
+                                .playOn(list.get(i));
+                    }
+
+                    YoYo.with(Techniques.Swing)
+                            .duration(50)
+                            .repeat(3)
+                            .playOn(list.get(i));
                 }
 
                 String text = spinner.getSelectedItem().toString();
@@ -79,8 +98,6 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
                 int new4 = getResources().getIdentifier("dice" + val4, "drawable","edu.illinois.cs.cs125.dice");
                 int new5 = getResources().getIdentifier("dice" + val5, "drawable","edu.illinois.cs.cs125.dice");
                 int new6 = getResources().getIdentifier("dice" + val6, "drawable","edu.illinois.cs.cs125.dice");
-
-
 
                 imageView1.setImageResource(new1);
                 imageView2.setImageResource(new2);

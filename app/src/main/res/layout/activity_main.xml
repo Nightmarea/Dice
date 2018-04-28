@@ -80,8 +80,7 @@
         android:layout_marginBottom="125dp"
         android:background="@color/colorPrimary"
         android:entries="@array/amount_arrays"
-        android:prompt="@string/input_prompt" />/>
-
+        android:prompt="@string/input_prompt" />
     <Button
         android:id="@+id/rolling"
         style="@style/Widget.AppCompat.Button.Colored"
